@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Кнопки Да / Нет</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background: #f5f5f5;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 12px 25px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .yes-button {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .no-button {
+      background: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Ты согласна?</h1>
+
+  <button class="yes-button" onclick="handleYesClick()">Да</button>
+  <button class="no-button" onclick="handleNoClick()">Нет</button>
+
+  <script>
+    let messageIndex = 0;
+
+    const messages = [
+      "Точно нет?",
+      "Подумай ещё",
+      "Ну давай 😅",
+      "Последний шанс",
+      "Ты уверена?"
+    ];
+
+    function handleNoClick() {
+      const noButton = document.querySelector(".no-button");
+      const yesButton = document.querySelector(".yes-button");
+
+      noButton.textContent = messages[messageIndex];
+
+      messageIndex = (messageIndex + 1) % messages.length;
+
+      const currentSize = parseFloat(
+        window.getComputedStyle(yesButton).fontSize
+      );
+
+      yesButton.style.fontSize = (currentSize * 1.5) + "px";
+    }
+
+    function handleYesClick() {
+      window.location.href = "yes_page.html";
+    }
+  </script>
+
+</body>
+</html>
